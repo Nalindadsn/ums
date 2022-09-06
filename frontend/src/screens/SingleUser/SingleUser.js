@@ -12,6 +12,13 @@ function SingleUser({ match, history, search }) {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [date, setDate] = useState('');
+  const [userId, setUserId] = useState('');
+  const [nic, setNic] = useState('');
+  const [dob, setDob] = useState('');
+  const [gender, setGender] = useState('');
+  const [MaritalStatus, setMaritalStatus] = useState('');
+  const [phone, setPhone] = useState('');
+  const [userType, setUserType] = useState('');
 
   const dispatch = useDispatch();
 
@@ -35,6 +42,13 @@ function SingleUser({ match, history, search }) {
 
       setName(data.name);
       setEmail(data.email);
+      setUserId(data.userId);
+      setNic(data.nic);
+      setDob(data.dob);
+      setGender(data.gender);
+      setPhone(data.phone);
+      setMaritalStatus(data.MaritalStatus);
+      setUserType(data.userType);
       setDate(data.updatedAt);
     };
 
@@ -48,8 +62,32 @@ function SingleUser({ match, history, search }) {
 
   const updateHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUserAction(match.params.id, name, email));
-    if (!name || !email) return;
+    dispatch(
+      updateUserAction(
+        match.params.id,
+        name,
+        email,
+        userId,
+        nic,
+        dob,
+        gender,
+        MaritalStatus,
+        phone,
+        userType
+      )
+    );
+    if (
+      !name ||
+      !email ||
+      !userId ||
+      !nic ||
+      !dob ||
+      !gender ||
+      !MaritalStatus ||
+      !phone ||
+      !userType
+    )
+      return;
 
     resetHandler();
     history.push('/userList');
@@ -83,6 +121,72 @@ function SingleUser({ match, history, search }) {
                 rows={4}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="userId">
+              <Form.Label>userId</Form.Label>
+              <Form.Control
+                placeholder="Enter the userId"
+                rows={4}
+                value={userId}
+                onChange={(e) => setUserId(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="nic">
+              <Form.Label>nic</Form.Label>
+              <Form.Control
+                placeholder="Enter the nic"
+                rows={4}
+                value={nic}
+                onChange={(e) => setNic(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="dob">
+              <Form.Label>dob</Form.Label>
+              <Form.Control
+                placeholder="Enter the dob"
+                rows={4}
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="gender">
+              <Form.Label>gender</Form.Label>
+              <Form.Control
+                placeholder="Enter the gender"
+                rows={4}
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="MaritalStatus">
+              <Form.Label>MaritalStatus</Form.Label>
+              <Form.Control
+                placeholder="Enter the MaritalStatus"
+                rows={4}
+                value={MaritalStatus}
+                onChange={(e) => setMaritalStatus(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="phone">
+              <Form.Label>phone</Form.Label>
+              <Form.Control
+                placeholder="Enter the phone"
+                rows={4}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="userType">
+              <Form.Label>userType</Form.Label>
+              <Form.Control
+                placeholder="Enter the userType"
+                rows={4}
+                value={userType}
+                onChange={(e) => setUserType(e.target.value)}
               />
             </Form.Group>
 

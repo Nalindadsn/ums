@@ -211,7 +211,8 @@ export const deleteUserAction = (id) => async (dispatch, getState) => {
 };
 
 export const updateUserAction =
-  (id, name, email) => async (dispatch, getState) => {
+  (id, name, email, userId, nic, dob, gender, MaritalStatus, phone, userType) =>
+  async (dispatch, getState) => {
     try {
       dispatch({
         type: USER_UPDATE_REQUEST,
@@ -230,7 +231,17 @@ export const updateUserAction =
 
       const { data } = await axios.put(
         `/api/users/${id}`,
-        { name, email },
+        {
+          name,
+          email,
+          userId,
+          nic,
+          dob,
+          gender,
+          MaritalStatus,
+          phone,
+          userType,
+        },
         config
       );
 
