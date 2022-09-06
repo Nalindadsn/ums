@@ -1,11 +1,11 @@
-import Note from "../models/noteModel.js";
-import asyncHandler from "express-async-handler";
+import Note from '../models/noteModel.js';
+import asyncHandler from 'express-async-handler';
 
 // @desc    Get logged in user notes
 // @route   GET /api/notes
 // @access  Private
 const getNotes = asyncHandler(async (req, res) => {
-  const notes = await Note.find({ user: req.user._id });
+  const notes = await Note.find();
   res.json(notes);
 });
 
@@ -18,7 +18,7 @@ const getNoteById = asyncHandler(async (req, res) => {
   if (note) {
     res.json(note);
   } else {
-    res.status(404).json({ message: "Note not found" });
+    res.status(404).json({ message: 'Note not found' });
   }
 
   res.json(note);
@@ -28,14 +28,21 @@ const getNoteById = asyncHandler(async (req, res) => {
 //@route           GET /api/notes/create
 //@access          Private
 const CreateNote = asyncHandler(async (req, res) => {
-  const { title, content, category } = req.body;
+  const { title, startDate, endDate, status, activityType } = req.body;
 
-  if (!title || !content || !category) {
+  if (!title || !startDate || !endDate || !status || !activityType) {
     res.status(400);
-    throw new Error("Please Fill all the feilds");
+    throw new Error('Please Fill all the feilds');
     return;
   } else {
-    const note = new Note({ user: req.user._id, title, content, category });
+    const note = new Note({
+      user: req.user._id,
+      title,
+      startDate,
+      endDate,
+      status,
+      activityType,
+    });
 
     const createdNote = await note.save();
 
@@ -56,10 +63,10 @@ const DeleteNote = asyncHandler(async (req, res) => {
 
   if (note) {
     await note.remove();
-    res.json({ message: "Note Removed" });
+    res.json({ message: 'Note Removed' });
   } else {
     res.status(404);
-    throw new Error("Note not Found");
+    throw new Error('Note not Found');
   }
 });
 
@@ -85,7 +92,7 @@ const UpdateNote = asyncHandler(async (req, res) => {
     res.json(updatedNote);
   } else {
     res.status(404);
-    throw new Error("Note not found");
+    throw new Error('Note not found');
   }
 });
 

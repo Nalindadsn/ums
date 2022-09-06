@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const noteSchema = mongoose.Schema(
   {
@@ -6,18 +6,30 @@ const noteSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    content: {
+    startDate: {
       type: String,
       required: true,
+      default: '0000-00-00',
     },
-    category: {
+    endDate: {
       type: String,
       required: true,
+      default: '0000-00-00',
+    },
+    status: {
+      type: String,
+      required: true,
+      default: 'pending',
+    },
+    activityType: {
+      type: String,
+      required: true,
+      default: '.',
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: 'User',
     },
   },
   {
@@ -25,6 +37,6 @@ const noteSchema = mongoose.Schema(
   }
 );
 
-const Note = mongoose.model("Note", noteSchema);
+const Note = mongoose.model('Note', noteSchema);
 
 export default Note;

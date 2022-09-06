@@ -84,8 +84,11 @@ function MyNotes({ history, search }) {
         <caption>List of Notes</caption>
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Action</th>
+            <th scope="col">user ID</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Activity Types</th>
           </tr>
         </thead>
         <tbody>

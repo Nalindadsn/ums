@@ -58,6 +58,13 @@ function SingleUser({ match, history, search }) {
   const resetHandler = () => {
     setName('');
     setEmail('');
+    setUserId('');
+    setNic('');
+    setDob('');
+    setGender('');
+    setMaritalStatus('');
+    setPhone('');
+    setUserType('');
   };
 
   const updateHandler = (e) => {
