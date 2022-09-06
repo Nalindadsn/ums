@@ -88,8 +88,10 @@ function UserList({ history, search }) {
       {loading && <Loading />}
       {loadingDelete && <Loading />}
 
+      <button className="btn btn-primary float-right" onClick={handlePrint}>
+        print
+      </button>
       <div className="table-responsive">
-        <button onClick={handlePrint}>print</button>
         <table
           class="table"
           ref={componentRef}

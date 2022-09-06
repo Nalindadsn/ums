@@ -73,7 +73,9 @@ function MyNotes({ history, search }) {
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />}
-      <button onClick={handlePrint}>print</button>
+      <button className="btn btn-primary  float-right" onClick={handlePrint}>
+        print
+      </button>
       <table
         class="table"
         ref={componentRef}

@@ -47,8 +47,13 @@ function MainScreen({ children, title }) {
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="userActivity/">
+              <a class="nav-link" href="/userActivity">
                 User Activity <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/profile">
+                User Details <span class="sr-only">(current)</span>
               </a>
             </li>
           </ul>
