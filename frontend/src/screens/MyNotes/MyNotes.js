@@ -95,7 +95,9 @@ function MyNotes({ history, search }) {
               .reverse()
               .map((note) => (
                 <tr>
-                  <td>{note.title}</td>
+                  <td>
+                    {note.title}-{note.user}-
+                  </td>
                   <td>
                     <Button href={`/note/${note._id}`}>Edit</Button>
                     <Button
