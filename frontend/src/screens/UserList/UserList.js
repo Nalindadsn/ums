@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteUserAction, listUsers } from '../../actions/userActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
+import ReactPDFPrint from '../../components/ReactPDFPrint';
 // import PDFFile from '../../components/PDFFile';
 // import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 
@@ -78,6 +79,7 @@ function UserList({ history, search }) {
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />}
+      <ReactPDFPrint />
       <div className="table-responsive">
         <table class="table">
           <caption>List of users</caption>
