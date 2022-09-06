@@ -9,6 +9,7 @@ import { deleteNoteAction, listNotes } from '../../actions/notesActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import { useReactToPrint } from 'react-to-print';
+import UserData from '../../components/UserData';
 
 function MyNotes({ history, search }) {
   const dispatch = useDispatch();
@@ -97,7 +98,9 @@ function MyNotes({ history, search }) {
               .reverse()
               .map((note) => (
                 <tr>
-                  <td>{note._id}</td>
+                  <td>
+                    <UserData id={note.user} />
+                  </td>
                   <td>{note.startDate}</td>
                   <td>{note.endDate}</td>
                   <td>{note.status}</td>
