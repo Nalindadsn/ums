@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Accordion, Badge, Button, Card } from 'react-bootstrap';
 import MainScreen from '../../components/MainScreen';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,8 @@ import { deleteUserAction, listUsers } from '../../actions/userActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import ReactPDFPrint from '../../components/ReactPDFPrint';
+import UserListPDF from '../../components/UserListPDF';
+import { useReactToPrint } from 'react-to-print';
 // import PDFFile from '../../components/PDFFile';
 // import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 
@@ -39,6 +41,12 @@ function UserList({ history, search }) {
   const noteUpdate = useSelector((state) => state.noteUpdate);
   const { success: successUpdate } = noteUpdate;
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'emp-data',
+    onafterprint: () => alert('print success'),
+  });
   useEffect(() => {
     dispatch(listUsers());
     if (!userInfo) {
@@ -79,9 +87,14 @@ function UserList({ history, search }) {
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />}
-      <ReactPDFPrint />
+
       <div className="table-responsive">
-        <table class="table">
+        <button onClick={handlePrint}>print</button>
+        <table
+          class="table"
+          ref={componentRef}
+          style={{ width: '100%', height: window.innerHeight }}
+        >
           <caption>List of users</caption>
           <thead>
             <tr>

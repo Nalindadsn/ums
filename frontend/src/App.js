@@ -38,7 +38,7 @@ function App() {
         />
         <Route path="/user/:id" component={SingleUser} />
         <Route path="/createuser" component={CreateUser} />;
-        <Route path="/userActivity" component={SingleNote} />
+        {/* <Route path="/userActivity" component={SingleNote} /> */}
         <Route path="/note/:id" component={SingleNote} />
         <Route path="/createnote" component={CreateNote} />;
         <Route path="/profile" component={ProfileScreen} />

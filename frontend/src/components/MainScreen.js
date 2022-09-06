@@ -119,11 +119,15 @@ function MainScreen({ children, title }) {
               </a>
             </li>
           </ul>
+          <form class="form-inline ml-auto mt-2 mt-md-0">
+            <button class="btn btn-danger" type="submit">
+              LOGOUT
+            </button>
+          </form>
         </div>
       </nav>
       <main class="content-wrapper">
-        <div class="container-fluid bg-dark">
-          gg-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        <div class="container-fluid ">
           {title && <></>}
           {children}
         </div>

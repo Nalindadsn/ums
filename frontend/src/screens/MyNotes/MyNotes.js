@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Accordion, Badge, Button, Card } from 'react-bootstrap';
 import MainScreen from '../../components/MainScreen';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteNoteAction, listNotes } from '../../actions/notesActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
+import { useReactToPrint } from 'react-to-print';
 
 function MyNotes({ history, search }) {
   const dispatch = useDispatch();
@@ -34,7 +35,12 @@ function MyNotes({ history, search }) {
 
   const noteUpdate = useSelector((state) => state.noteUpdate);
   const { success: successUpdate } = noteUpdate;
-
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'emp-data',
+    onafterprint: () => alert('print success'),
+  });
   useEffect(() => {
     dispatch(listNotes());
     if (!userInfo) {
@@ -67,7 +73,12 @@ function MyNotes({ history, search }) {
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />}
-      <table class="table">
+      <button onClick={handlePrint}>print</button>
+      <table
+        class="table"
+        ref={componentRef}
+        style={{ width: '100%', height: window.innerHeight }}
+      >
         <caption>List of Notes</caption>
         <thead>
           <tr>
