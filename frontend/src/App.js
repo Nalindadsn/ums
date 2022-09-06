@@ -13,6 +13,7 @@ import { useState } from 'react';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import CreateUser from './screens/SingleUser/CreateUser';
 import SingleUser from './screens/SingleUser/SingleUser';
+import MyNotesUser from './screens/MyNotes/MyNotesUser';
 
 function App() {
   const [search, setSearch] = useState('');
@@ -28,6 +29,12 @@ function App() {
           path="/userActivity"
           component={({ history }) => (
             <MyNotes search={search} history={history} />
+          )}
+        />
+        <Route
+          path="/activityUser"
+          component={({ history }) => (
+            <MyNotesUser search={search} history={history} />
           )}
         />
         <Route

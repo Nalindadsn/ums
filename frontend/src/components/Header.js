@@ -11,8 +11,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {} from 'react-router-dom';
 import { logout } from '../actions/userActions';
 
+import { useLocation } from 'react-router-dom';
 function Header({ setSearch, location, history }) {
   const dispatch = useDispatch();
+
+  const locationn = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -35,7 +38,7 @@ function Header({ setSearch, location, history }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="float-right ml-5">
-            {userInfo && (
+            {userInfo && locationn.pathname.substring(1) === 'userList' && (
               <Form inline>
                 <FormControl
                   type="text"

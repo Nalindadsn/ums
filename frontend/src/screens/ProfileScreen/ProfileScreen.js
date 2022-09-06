@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
-import MainScreen from "../../components/MainScreen";
-import "./ProfileScreen.css";
-import { useDispatch, useSelector } from "react-redux";
-import { updateProfile } from "../../actions/userActions";
-import Loading from "../../components/Loading";
-import ErrorMessage from "../../components/ErrorMessage";
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import MainScreen from '../../components/MainScreen';
+import './ProfileScreen.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile } from '../../actions/userActions';
+import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const ProfileScreen = ({ location, history }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [pic, setPic] = useState();
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const ProfileScreen = ({ location, history }) => {
 
   useEffect(() => {
     if (!userInfo) {
-      history.push("/");
+      history.push('/');
     } else {
       setName(userInfo.name);
       setEmail(userInfo.email);
@@ -35,13 +35,13 @@ const ProfileScreen = ({ location, history }) => {
 
   const postDetails = (pics) => {
     setPicMessage(null);
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+    if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
       const data = new FormData();
-      data.append("file", pics);
-      data.append("upload_preset", "notezipper");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
-        method: "post",
+      data.append('file', pics);
+      data.append('upload_preset', 'notezipper');
+      data.append('cloud_name', 'piyushproj');
+      fetch('https://api.cloudinary.com/v1_1/piyushproj/image/upload', {
+        method: 'post',
         body: data,
       })
         .then((res) => res.json())
@@ -53,7 +53,7 @@ const ProfileScreen = ({ location, history }) => {
           console.log(err);
         });
     } else {
-      return setPicMessage("Please Select an Image");
+      return setPicMessage('Please Select an Image');
     }
   };
 
@@ -111,7 +111,7 @@ const ProfileScreen = ({ location, history }) => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 ></Form.Control>
-              </Form.Group>{" "}
+              </Form.Group>{' '}
               {picMessage && (
                 <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
               )}
@@ -125,16 +125,24 @@ const ProfileScreen = ({ location, history }) => {
                   custom
                 />
               </Form.Group>
+              <div style={{ textAlign: 'justify' }}></div>
               <Button type="submit" varient="primary">
                 Update
               </Button>
+              <a
+                type="submit"
+                className="btn btn-primary float-right"
+                href="/activityUser"
+              >
+                User Activity
+              </a>
             </Form>
           </Col>
           <Col
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <img src={pic} alt={name} className="profilePic" />

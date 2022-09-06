@@ -116,6 +116,10 @@ const getUsers = asyncHandler(async (req, res) => {
   const notes = await User.find();
   res.json(notes);
 });
+const getUsersAdmin = asyncHandler(async (req, res) => {
+  const notes = await User.find({ userType: 'admin' });
+  res.json(notes);
+});
 const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -167,4 +171,5 @@ export {
   getUsers,
   getUserById,
   updateUser,
+  getUsersAdmin,
 };

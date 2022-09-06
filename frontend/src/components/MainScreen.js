@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import './Screen.css';
-
 import { logout } from '../actions/userActions';
 function MainScreen({ children, title }) {
   const dispatch = useDispatch();

@@ -8,6 +8,14 @@ const getNotes = asyncHandler(async (req, res) => {
   const notes = await Note.find();
   res.json(notes);
 });
+const getNotesUser = asyncHandler(async (req, res) => {
+  const notes = await Note.find({ user: req.user._id });
+  res.json(notes);
+  //return 'test';
+
+  // const notes = await Note.find();
+  // res.json(notes);
+});
 
 //@description     Fetch single Note
 //@route           GET /api/notes/:id
@@ -96,4 +104,11 @@ const UpdateNote = asyncHandler(async (req, res) => {
   }
 });
 
-export { getNoteById, getNotes, CreateNote, DeleteNote, UpdateNote };
+export {
+  getNoteById,
+  getNotes,
+  getNotesUser,
+  CreateNote,
+  DeleteNote,
+  UpdateNote,
+};

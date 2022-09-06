@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteNoteAction, listNotes } from '../../actions/notesActions';
+import { deleteNoteAction, listNotesUser } from '../../actions/notesActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import { useReactToPrint } from 'react-to-print';
 
-function MyNotes({ history, search }) {
+function MyNotesUser({ history, search }) {
   const dispatch = useDispatch();
 
   const noteList = useSelector((state) => state.noteList);
@@ -42,7 +42,7 @@ function MyNotes({ history, search }) {
     onafterprint: () => alert('print success'),
   });
   useEffect(() => {
-    dispatch(listNotes());
+    dispatch(listNotesUser());
     if (!userInfo) {
       history.push('/');
     }
@@ -97,7 +97,10 @@ function MyNotes({ history, search }) {
               .reverse()
               .map((note) => (
                 <tr>
-                  <td>{note._id}</td>
+                  <td>
+                    {note._id}
+                    {userInfo._id === note.user ? 'y' : 'n'}
+                  </td>
                   <td>{note.startDate}</td>
                   <td>{note.endDate}</td>
                   <td>{note.status}</td>
@@ -110,4 +113,4 @@ function MyNotes({ history, search }) {
   );
 }
 
-export default MyNotes;
+export default MyNotesUser;
