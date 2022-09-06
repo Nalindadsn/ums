@@ -187,14 +187,22 @@ function SingleUser({ match, history, search }) {
                 onChange={(e) => setPhone(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="userType">
-              <Form.Label>userType</Form.Label>
+
+            <Form.Group controlId="formBasicSelect">
+              <Form.Label>Select Norm Type</Form.Label>
               <Form.Control
-                placeholder="Enter the userType"
-                rows={4}
+                as="select"
                 value={userType}
-                onChange={(e) => setUserType(e.target.value)}
-              />
+                onChange={(e) => {
+                  console.log('e.target.value', e.target.value);
+                  setUserType(e.target.value);
+                }}
+              >
+                <option value="customer">Customer</option>
+                <option value="boatOwner">BoatOwner</option>
+                <option value="inventoryManager">Inventory Manager</option>
+                <option value="admin">Admin</option>
+              </Form.Control>
             </Form.Group>
 
             {loading && <Loading size={50} />}

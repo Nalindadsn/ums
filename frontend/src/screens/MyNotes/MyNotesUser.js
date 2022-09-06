@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Accordion, Badge, Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import MainScreen from '../../components/MainScreen';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -75,7 +75,7 @@ function MyNotesUser({ history, search }) {
         print
       </button>
       <table
-        class="table"
+        className="table"
         ref={componentRef}
         style={{ width: '100%', height: window.innerHeight }}
       >

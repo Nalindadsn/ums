@@ -260,3 +260,139 @@ export const updateUserAction =
       });
     }
   };
+
+export const listUsersAdmin = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USERS_LIST_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users/listAdmin`, config);
+
+    dispatch({
+      type: USERS_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: USERS_LIST_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const listUsersCustomer = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USERS_LIST_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users/listCustomer`, config);
+
+    dispatch({
+      type: USERS_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: USERS_LIST_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const listUsersBoatOwner = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USERS_LIST_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users/listBoatOwner`, config);
+
+    dispatch({
+      type: USERS_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: USERS_LIST_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const listUsersInventoryManager = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USERS_LIST_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users/listInventoryManager`, config);
+
+    dispatch({
+      type: USERS_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: USERS_LIST_FAIL,
+      payload: message,
+    });
+  }
+};

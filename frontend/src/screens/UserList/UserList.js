@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Accordion, Badge, Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import MainScreen from '../../components/MainScreen';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -81,6 +81,23 @@ function UserList({ history, search }) {
       <Link to="/register">
         <Button>Create new User</Button>
       </Link>
+      <Link to="/userList">
+        <span className="mx-1  text-decoration-none bg-dark text-white px-2 py-1">
+          All
+        </span>
+      </Link>
+      <Link to="/userListAdmin">
+        <span className="mx-1 py-1">Admins</span>
+      </Link>
+      <Link to="/userListCustomer">
+        <span className="mx-1 py-1">Customers</span>
+      </Link>
+      <Link to="/userListBoatOwner">
+        <span className="mx-1 py-1">BoatOwner</span>
+      </Link>
+      <Link to="/userListInventoryManager">
+        <span className="mx-1 py-1">Inventory Managers</span>
+      </Link>
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       {errorDelete && (
         <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
@@ -93,7 +110,7 @@ function UserList({ history, search }) {
       </button>
       <div className="table-responsive">
         <table
-          class="table"
+          className="table"
           ref={componentRef}
           style={{ width: '100%', height: window.innerHeight }}
         >
@@ -105,6 +122,7 @@ function UserList({ history, search }) {
               <th scope="col">phone</th>
               <th scope="col">userId</th>
               <th scope="col">NIC</th>
+              <th scope="col">User Type</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -122,15 +140,16 @@ function UserList({ history, search }) {
                     <td>{note.phone}</td>
                     <td>{note.userId}</td>
                     <td>{note.nic}</td>
+                    <td>{note.userType}</td>
                     <td className="text-center">
                       <Button href={`/user/${note._id}`}>Edit</Button>
-                      <Button
+                      {/* <Button
                         variant="danger"
                         className="mx-2"
                         onClick={() => deleteHandler(note._id)}
                       >
                         Delete
-                      </Button>
+                      </Button> */}
                     </td>
                   </tr>
                 ))}

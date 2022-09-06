@@ -32,24 +32,26 @@ function Header({ setSearch, location, history }) {
       expand="lg"
       bg="white"
       variant="white"
-      style={{ marginLeft: '200px' }}
+      style={{ marginLeft: '170px', border: '0' }}
     >
       <Container>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="float-right ml-5">
-            {userInfo && locationn.pathname.substring(1) === 'userList' && (
-              <Form inline>
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  className="mr-sm-2"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </Form>
-            )}
-          </Nav>
-        </Navbar.Collapse>
+        {userInfo && locationn.pathname.substring(1) === 'userList' && (
+          <>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="float-right ml-5">
+                <Form inline>
+                  <FormControl
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </Form>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        )}
       </Container>
     </Navbar>
   );

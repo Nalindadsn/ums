@@ -14,6 +14,10 @@ import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import CreateUser from './screens/SingleUser/CreateUser';
 import SingleUser from './screens/SingleUser/SingleUser';
 import MyNotesUser from './screens/MyNotes/MyNotesUser';
+import UserListAdmin from './screens/UserListAdmin/UserListAdmin';
+import UserListBoatOwner from './screens/UserListBoatOwner/UserListBoatOwner';
+import UserListCustomer from './screens/UserListCustomer/UserListCustomer';
+import UserListInventoryManager from './screens/UserListInventoryManager/UserListInventoryManager';
 
 function App() {
   const [search, setSearch] = useState('');
@@ -41,6 +45,30 @@ function App() {
           path="/userList"
           component={({ history }) => (
             <UserList search={search} history={history} />
+          )}
+        />
+        <Route
+          path="/userListAdmin"
+          component={({ history }) => (
+            <UserListAdmin search={search} history={history} />
+          )}
+        />
+        <Route
+          path="/userListCustomer"
+          component={({ history }) => (
+            <UserListCustomer search={search} history={history} />
+          )}
+        />
+        <Route
+          path="/userListBoatOwner"
+          component={({ history }) => (
+            <UserListBoatOwner search={search} history={history} />
+          )}
+        />
+        <Route
+          path="/userListInventoryManager"
+          component={({ history }) => (
+            <UserListInventoryManager search={search} history={history} />
           )}
         />
         <Route path="/user/:id" component={SingleUser} />

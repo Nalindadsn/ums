@@ -17,12 +17,12 @@ function MainScreen({ children, title }) {
   return (
     <div className="">
       {' '}
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a className="navbar-brand" href="#">
           Sidebar Nav
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarCollapse"
@@ -30,36 +30,36 @@ function MainScreen({ children, title }) {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">
-                Home <span class="sr-only">(current)</span>
+        <div className="collapse navbar-collapse" id="navbarCollapse">
+          <ul className="navbar-nav mr-auto sidenav" id="navAccordion">
+            <li className="nav-item active">
+              <a className="nav-link" href="/">
+                Home <span className="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/userList">
-                User List <span class="sr-only">(current)</span>
+            <li className="nav-item active">
+              <a className="nav-link" href="/userList">
+                User List <span className="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/userActivity">
-                User Activity <span class="sr-only">(current)</span>
+            <li className="nav-item active">
+              <a className="nav-link" href="/userActivity">
+                User Activity <span className="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/profile">
-                User Details <span class="sr-only">(current)</span>
+            <li className="nav-item active">
+              <a className="nav-link" href="/profile">
+                User Details <span className="sr-only">(current)</span>
               </a>
             </li>
           </ul>
-          <form class="form-inline ml-auto mt-2 mt-md-0">
+          <form className="form-inline ml-auto mt-2 mt-md-0">
             {userInfo ? (
               <button
-                class="btn btn-danger"
+                className="btn btn-danger"
                 type="submit"
                 onClick={logoutHandler}
               >
@@ -71,8 +71,8 @@ function MainScreen({ children, title }) {
           </form>
         </div>
       </nav>
-      <main class="content-wrapper">
-        <div class="container-fluid ">
+      <main className="content-wrapper">
+        <div className="container-fluid ">
           {title && <></>}
           {children}
         </div>
