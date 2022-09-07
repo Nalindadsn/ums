@@ -20,6 +20,7 @@ function SingleUser({ match, history, search }) {
   const [phone, setPhone] = useState('');
   const [userType, setUserType] = useState('');
 
+  const [message, setMessage] = useState(null);
   const dispatch = useDispatch();
 
   const noteUpdate = useSelector((state) => state.noteUpdate);
@@ -69,35 +70,49 @@ function SingleUser({ match, history, search }) {
 
   const updateHandler = (e) => {
     e.preventDefault();
-    dispatch(
-      updateUserAction(
-        match.params.id,
-        name,
-        email,
-        userId,
-        nic,
-        dob,
-        gender,
-        MaritalStatus,
-        phone,
-        userType
-      )
-    );
-    if (
-      !name ||
-      !email ||
-      !userId ||
-      !nic ||
-      !dob ||
-      !gender ||
-      !MaritalStatus ||
-      !phone ||
-      !userType
-    )
-      return;
 
-    resetHandler();
-    history.push('/userList');
+    if ((nic.length === 10 || nic.length === 12) && phone.length === 10) {
+      setMessage(null);
+
+      dispatch(
+        updateUserAction(
+          match.params.id,
+          name,
+          email,
+          userId,
+          nic,
+          dob,
+          gender,
+          MaritalStatus,
+          phone,
+          userType
+        )
+      );
+
+      if (
+        !name ||
+        !email ||
+        !userId ||
+        !nic ||
+        !dob ||
+        !gender ||
+        !MaritalStatus ||
+        !phone ||
+        !userType
+      )
+        return;
+
+      resetHandler();
+      history.push('/userList');
+    } else {
+      if (nic.length !== 10 || nic.length !== 12) {
+        setMessage('Invalid NIC');
+        console.log('10');
+      }
+      if (phone.length !== 10) {
+        setMessage('Invalid Phone');
+      }
+    }
   };
 
   return (
@@ -107,7 +122,9 @@ function SingleUser({ match, history, search }) {
         <Card.Body>
           <Form onSubmit={updateHandler}>
             {loadingDelete && <Loading />}
+            {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+
             {errorDelete && (
               <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
             )}

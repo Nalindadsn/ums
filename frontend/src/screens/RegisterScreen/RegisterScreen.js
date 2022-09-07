@@ -97,7 +97,6 @@ function RegisterScreen({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    alert(password !== confirmpassword && nic.length !== 10);
 
     if (
       password === confirmpassword &&
