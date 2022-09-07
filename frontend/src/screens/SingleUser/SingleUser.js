@@ -225,13 +225,13 @@ function SingleUser({ match, history, search }) {
             <Button variant="primary" type="submit">
               Update User
             </Button>
-            <Button
+            {/* <Button
               className="mx-2"
               variant="danger"
               onClick={() => deleteHandler(match.params.id)}
             >
               Delete User
-            </Button>
+            </Button> */}
           </Form>
         </Card.Body>
 

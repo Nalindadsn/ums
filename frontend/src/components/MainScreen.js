@@ -38,21 +38,25 @@ function MainScreen({ children, title }) {
             id="navAccordion"
             style={{ marginLeft: '-2px' }}
           >
-            <li
-              className="nav-item active text-center"
-              style={{ background: '#333' }}
-            >
-              <a className="nav-link" href="/profile">
-                <img
-                  src={userInfo.pic}
-                  alt="user"
-                  className="rounded-circle"
-                  style={{ width: '100px' }}
-                />
-                <br />
-                {userInfo.name}
-              </a>
-            </li>
+            {userInfo ? (
+              <li
+                className="nav-item active text-center"
+                style={{ background: '#333' }}
+              >
+                <a className="nav-link" href="/profile">
+                  <img
+                    src={userInfo.pic}
+                    alt="user"
+                    className="rounded-circle"
+                    style={{ width: '100px' }}
+                  />
+                  <br />
+                  {userInfo.name}
+                </a>
+              </li>
+            ) : (
+              ''
+            )}
             <li className="nav-item active">
               <a className="nav-link" href="/">
                 Home <span className="sr-only">(current)</span>

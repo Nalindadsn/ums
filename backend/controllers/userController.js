@@ -13,6 +13,10 @@ const authUser = asyncHandler(async (req, res) => {
   //   name: user,
   // });
   if (user && (await user.matchPassword(password))) {
+    if (user.userType !== 'admin') {
+      res.status(401);
+      throw new Error('You are not an admin');
+    }
     res.json({
       _id: user._id,
       name: user.name,
