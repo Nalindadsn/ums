@@ -34,7 +34,26 @@ function MainScreen({ children, title }) {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav mr-auto sidenav" id="navAccordion">
+          <ul
+            className="navbar-nav mr-auto sidenav"
+            id="navAccordion"
+            style={{ marginLeft: '-2px' }}
+          >
+            <li
+              className="nav-item active text-center"
+              style={{ background: '#333' }}
+            >
+              <a className="nav-link" href="/profile">
+                <img
+                  src={userInfo.pic}
+                  alt="user"
+                  className="rounded-circle"
+                  style={{ width: '100px' }}
+                />
+                <br />
+                {userInfo.name}
+              </a>
+            </li>
             <li className="nav-item active">
               <a className="nav-link" href="/">
                 Home <span className="sr-only">(current)</span>
