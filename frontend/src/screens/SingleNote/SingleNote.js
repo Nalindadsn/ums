@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteNoteAction, updateNoteAction } from '../../actions/notesActions';
 import ErrorMessage from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
-import ReactMarkdown from 'react-markdown';
 
 function SingleNote({ match, history }) {
   const [title, setTitle] = useState();

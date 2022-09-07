@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteUserAction, updateUserAction } from '../../actions/userActions';
 import ErrorMessage from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
-import ReactMarkdown from 'react-markdown';
 
 function SingleUser({ match, history, search }) {
   const [name, setName] = useState();

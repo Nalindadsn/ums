@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Button } from 'react-bootstrap';
 import MainScreen from '../../components/MainScreen';
-import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteNoteAction, listNotesUser } from '../../actions/notesActions';
+import { listNotesUser } from '../../actions/notesActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import { useReactToPrint } from 'react-to-print';
@@ -56,11 +53,11 @@ function MyNotesUser({ history, search }) {
     successUpdate,
   ]);
 
-  const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteNoteAction(id));
-    }
-  };
+  // const deleteHandler = (id) => {
+  //   if (window.confirm('Are you sure?')) {
+  //     dispatch(deleteNoteAction(id));
+  //   }
+  // };
 
   return (
     <MainScreen title={`Welcome Back ${userInfo && userInfo.name}..`}>

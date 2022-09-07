@@ -2,14 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import MainScreen from '../../components/MainScreen';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUserAction, listUsers } from '../../actions/userActions';
+import { listUsers } from '../../actions/userActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
-import ReactPDFPrint from '../../components/ReactPDFPrint';
-import UserListPDF from '../../components/UserListPDF';
 import { useReactToPrint } from 'react-to-print';
 // import PDFFile from '../../components/PDFFile';
 // import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
@@ -61,11 +58,11 @@ function UserList({ history, search }) {
     successUpdate,
   ]);
 
-  const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteUserAction(id));
-    }
-  };
+  // const deleteHandler = (id) => {
+  //   if (window.confirm('Are you sure?')) {
+  //     dispatch(deleteUserAction(id));
+  //   }
+  // };
 
   return (
     <MainScreen title={`Welcome Back ${userInfo && userInfo.name}..`}>

@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Screen.css';
 import { logout } from '../actions/userActions';
@@ -18,7 +17,7 @@ function MainScreen({ children, title }) {
     <div className="">
       {' '}
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           Sidebar Nav
         </a>
         <button
