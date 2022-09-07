@@ -9,10 +9,10 @@ import MainScreen from '../../components/MainScreen';
 import './RegisterScreen.css';
 
 function RegisterScreen({ history }) {
-  const [userType, setUserType] = useState('');
+  const [userType, setUserType] = useState('customer');
   const [userId, setUserId] = useState('');
   const [nic, setNIC] = useState('');
-  const [dob, setDob] = useState('');
+  const [dob, setDob] = useState('2000-01-01');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -100,7 +100,7 @@ function RegisterScreen({ history }) {
 
     if (password !== confirmpassword) {
       setMessage('Passwords do not match');
-    } else
+    } else {
       dispatch(
         register(
           name,
@@ -116,6 +116,7 @@ function RegisterScreen({ history }) {
           userType
         )
       );
+    }
   };
 
   return (

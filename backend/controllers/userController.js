@@ -47,11 +47,23 @@ const registerUser = asyncHandler(async (req, res) => {
     userType,
   } = req.body;
 
-  const userExists = await User.findOne({ email });
+  const userExistsA = await User.findOne({ email });
 
-  if (userExists) {
+  if (userExistsA) {
     res.status(404);
-    throw new Error('User already exists');
+    throw new Error('Email already exists');
+  }
+  const userExistsB = await User.findOne({ nic });
+
+  if (userExistsB) {
+    res.status(404);
+    throw new Error('NIC already exists');
+  }
+  const userExistsC = await User.findOne({ userId });
+
+  if (userExistsC) {
+    res.status(404);
+    throw new Error('User ID already exists');
   }
 
   const user = await User.create({

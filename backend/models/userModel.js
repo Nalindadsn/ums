@@ -30,12 +30,12 @@ const userSchema = mongoose.Schema(
     nic: {
       type: String,
       required: true,
-      default: '00000V',
+      unique: true,
     },
     userId: {
       type: String,
       required: true,
-      default: '00000V',
+      unique: true,
     },
     gender: {
       type: String,
