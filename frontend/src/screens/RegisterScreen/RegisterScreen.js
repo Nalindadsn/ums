@@ -97,10 +97,14 @@ function RegisterScreen({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    alert(password !== confirmpassword && nic.length !== 10);
 
-    if (password !== confirmpassword) {
-      setMessage('Passwords do not match');
-    } else {
+    if (
+      password === confirmpassword &&
+      (nic.length === 10 || nic.length === 12) &&
+      phone.length === 10
+    ) {
+      setMessage(null);
       dispatch(
         register(
           name,
@@ -116,6 +120,17 @@ function RegisterScreen({ history }) {
           userType
         )
       );
+    } else {
+      if (nic.length !== 10 || nic.length !== 12) {
+        setMessage('Invalid NIC');
+        console.log('10');
+      }
+      if (phone.length !== 10) {
+        setMessage('Invalid Phone');
+      }
+      if (password !== confirmpassword) {
+        setMessage('Passwords do not match');
+      }
     }
   };
 
