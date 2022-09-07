@@ -18,7 +18,7 @@ import {
 } from '../constants/userConstants';
 import axios from 'axios';
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (userId, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
 
@@ -30,7 +30,7 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       '/api/users/login',
-      { email, password },
+      { userId, password },
       config
     );
 

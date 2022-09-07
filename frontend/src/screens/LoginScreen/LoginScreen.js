@@ -9,7 +9,7 @@ import MainScreen from '../../components/MainScreen';
 import './LoginScreen.css';
 
 function LoginScreen({ history }) {
-  const [email, setEmail] = useState('');
+  const [userId, setuserId] = useState('');
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function LoginScreen({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login(userId, password));
   };
 
   return (
@@ -34,13 +34,13 @@ function LoginScreen({ history }) {
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group controlId="formBasicuserId">
+            <Form.Label>User ID</Form.Label>
             <Form.Control
-              type="email"
-              value={email}
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={userId}
+              placeholder="Enter userId"
+              onChange={(e) => setuserId(e.target.value)}
             />
           </Form.Group>
 
