@@ -171,6 +171,13 @@ const updateUser = asyncHandler(async (req, res) => {
     phone,
     userType,
   } = req.body;
+  // const userExistsC = await User.findOne({ userId });
+
+  // if (userExistsC) {
+  //   res.status(404);
+  //   throw new Error('User ID already exists');
+  // }
+
   const user = await User.findById(req.params.id);
 
   if (user) {

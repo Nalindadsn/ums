@@ -3,7 +3,7 @@ import MainScreen from '../../components/MainScreen';
 import axios from 'axios';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUserAction, updateUserAction } from '../../actions/userActions';
+import { updateUserAction } from '../../actions/userActions';
 import ErrorMessage from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 
@@ -28,12 +28,12 @@ function SingleUser({ match, history, search }) {
   const noteDelete = useSelector((state) => state.noteDelete);
   const { loading: loadingDelete, error: errorDelete } = noteDelete;
 
-  const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteUserAction(id));
-    }
-    history.push('/userActivity');
-  };
+  // const deleteHandler = (id) => {
+  //   if (window.confirm('Are you sure?')) {
+  //     dispatch(deleteUserAction(id));
+  //   }
+  //   history.push('/userActivity');
+  // };
 
   useEffect(() => {
     const fetching = async () => {
